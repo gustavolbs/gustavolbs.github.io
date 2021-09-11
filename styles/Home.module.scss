@@ -1,0 +1,82 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  margin: 0 auto;
+  margin-left: 10vmax;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@keyframes text {
+  0% {
+    opacity: 0;
+    transform: translateY(30vh);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+.sidebarText {
+  font-size: 19vmin;
+  font-weight: bolder;
+  line-height: 108%;
+
+  div {
+    margin-left: 0;
+    transition: all 0.4s cubic-bezier(0.2, 0.6, 0.2, 1);
+
+    -webkit-animation: text 0.6s cubic-bezier(0.2, 0.6, 0.2, 1);
+    -moz-animation: text 0.6s cubic-bezier(0.2, 0.6, 0.2, 1);
+    animation: text 0.6s cubic-bezier(0.2, 0.6, 0.2, 1);
+    -webkit-animation-fill-mode: backwards;
+    -moz-animation-fill-mode: backwards;
+    animation-fill-mode: backwards;
+  }
+
+  &:hover {
+    div {
+      margin-left: 40px;
+    }
+  }
+}
+
+@keyframes bg-photo {
+  0% {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.backgroundPhoto {
+  background-image: url('/me.png');
+  z-index: 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 35%;
+  filter: grayscale(100%) brightness(0.4) drop-shadow(0 0 20px #555);
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  -webkit-animation: bg-photo 1.2s cubic-bezier(0.5, 0.6, 0.6, 1);
+  -moz-animation: bg-photo 1.2s cubic-bezier(0.5, 0.6, 0.6, 1);
+  animation: bg-photo 1.2s cubic-bezier(0.5, 0.6, 0.6, 1);
+  -webkit-animation-fill-mode: backwards;
+  -moz-animation-fill-mode: backwards;
+  animation-fill-mode: backwards;
+}
