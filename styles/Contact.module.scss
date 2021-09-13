@@ -1,0 +1,213 @@
+@keyframes text {
+  0% {
+    opacity: 0;
+    transform: translateY(30vh);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  position: relative;
+  margin: 0 auto 0 auto;
+  flex-direction: column;
+  // width: fit-content;
+  max-width: 60%;
+  margin: 20vh auto 30vh auto;
+}
+
+.center {
+  // min-height: calc(90vh - 80px);
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+}
+
+.title {
+  // font-size: 12vmin;
+  font-weight: bolder;
+  line-height: 140%;
+  font-size: 1.5em;
+
+  -webkit-animation: text 0.6s cubic-bezier(0.2, 0.6, 0.2, 1);
+  -moz-animation: text 0.6s cubic-bezier(0.2, 0.6, 0.2, 1);
+  animation: text 0.6s cubic-bezier(0.2, 0.6, 0.2, 1);
+  -webkit-animation-fill-mode: backwards;
+  -moz-animation-fill-mode: backwards;
+  animation-fill-mode: backwards;
+}
+
+.main {
+  max-width: 70%;
+  margin: 0 auto;
+
+  h2 {
+    line-height: 140%;
+    font-size: 40px;
+    margin: 24vh 0 4vh 0;
+    letter-spacing: 0.7px;
+  }
+
+  p {
+    line-height: 170%;
+    font-weight: 300;
+    font-size: 18px;
+    margin-bottom: 3vh;
+    letter-spacing: 0.7px;
+  }
+
+  p + div {
+    display: flex;
+    flex-direction: column;
+
+    span,
+    a {
+      display: block;
+      margin: 2vh 0;
+      font-size: 19px;
+      font-weight: 600;
+      margin-left: 0;
+      transition: all 0.4s cubic-bezier(0.2, 0.6, 0.2, 1);
+      cursor: pointer;
+
+      &:hover {
+        margin-left: 40px;
+      }
+    }
+
+    span:after {
+      content: 'gustavo.luiz.bispo.santos@gmail.com';
+      word-break: break-all;
+    }
+
+    span:hover {
+      &:after {
+        content: 'Copy to clipboard!';
+      }
+    }
+  }
+}
+
+.contactForm {
+  div {
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: min-content min-content 1fr;
+    gap: 16px 16px;
+    grid-template-areas:
+      'name email'
+      'subject subject'
+      'message message';
+    input,
+    textarea {
+      width: 100%;
+      border: 0;
+      background: #2b2b2b;
+      height: 50px;
+      font-size: 16px;
+      color: #8d8d8d;
+      padding: 0 20px;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      outline: none;
+      font-family: inherit;
+      line-height: 1.15;
+    }
+
+    textarea {
+      padding: 20px;
+    }
+
+    :nth-child(1) {
+      grid-area: name;
+    }
+
+    :nth-child(2) {
+      grid-area: email;
+    }
+
+    :nth-child(3) {
+      grid-area: subject;
+    }
+
+    :nth-child(4) {
+      grid-area: message;
+      min-width: 100%;
+      max-width: 100%;
+      min-height: 150px;
+    }
+  }
+
+  button {
+    padding: 16px 32px;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(
+      15deg,
+      #0070f3 0%,
+      #0070f3 50%,
+      rgba(0, 0, 0, 0) 50%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    background-size: 200% 1%;
+    background-position: 100% 0;
+    transition: all 0.3s;
+    color: #0070f3;
+    font-size: 14px;
+    letter-spacing: 4px;
+    font-family: 'Open Sans', sans-serif;
+    display: block;
+    text-align: center;
+    border: 2px solid #0070f3;
+    margin-left: auto;
+    margin-top: 32px;
+    cursor: pointer;
+
+    &:hover {
+      background-position: 0 100%;
+      color: #000;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    max-width: 86%;
+  }
+
+  .main {
+    max-width: 90%;
+  }
+
+  .title {
+    // font-size: 12vmin;
+    font-weight: bolder;
+    line-height: 140%;
+    font-size: 1.597em;
+  }
+
+  .contactForm {
+    div {
+      grid-auto-columns: 1fr;
+      grid-template-columns: 1fr;
+      grid-template-rows: min-content min-content min-content 1fr;
+      gap: 16px 16px;
+      grid-template-areas:
+        'name'
+        'email'
+        'subject'
+        'message';
+    }
+  }
+}
+@media screen and (max-width: 590px) {
+  .contactForm {
+    button {
+      width: 100%;
+    }
+  }
+}
