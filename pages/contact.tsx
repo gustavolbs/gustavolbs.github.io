@@ -7,15 +7,17 @@ import toast from 'react-hot-toast';
 
 import styles from '../styles/Contact.module.scss';
 
+const initialState = {
+  name: '',
+  email: '',
+  subject: '',
+  message: '',
+};
+
 const Home: NextPage = () => {
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 767px)' });
   const [triggered, setIsTriggered] = useState(false);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-  });
+  const [formData, setFormData] = useState(initialState);
 
   useEffect(() => {
     document?.addEventListener('click', () => {
@@ -23,10 +25,23 @@ const Home: NextPage = () => {
     });
   });
 
+  const checkDataFormIsValid = () => {
+    if (formData && !formData.email)
+      throw new Error('Please enter a valid email!');
+    if (formData && !formData.name)
+      throw new Error('Please enter a valid name!');
+    if (formData && !formData.subject)
+      throw new Error('Please enter a valid subject!');
+    if (formData && !formData.message)
+      throw new Error('Please enter a valid message!');
+  };
+
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
     try {
+      checkDataFormIsValid();
+
       await axios.post(
         `https://formsubmit.co/ajax/${process.env.NEXT_PUBLIC_EMAIL_TOKEN}`,
         {
@@ -34,7 +49,8 @@ const Home: NextPage = () => {
         }
       );
 
-      toast.success('Successfully created!');
+      toast.success('Your message was sent successfully!');
+      setFormData(initialState);
     } catch (error: any) {
       toast.error(error.message ? error.message : error);
     }
