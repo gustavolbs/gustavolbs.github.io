@@ -27,16 +27,15 @@ const Home: NextPage = () => {
     event.preventDefault();
 
     try {
-      // const response = await axios.post(
-      //   `https://formsubmit.co/ajax/${process.env.NEXT_PUBLIC_EMAIL_TOKEN}`,
-      //   {
-      //     ...formData,
-      //   }
-      // );
+      await axios.post(
+        `https://formsubmit.co/ajax/${process.env.NEXT_PUBLIC_EMAIL_TOKEN}`,
+        {
+          ...formData,
+        }
+      );
 
       toast.success('Successfully created!');
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
       toast.error(error.message ? error.message : error);
     }
   };
@@ -82,7 +81,7 @@ const Home: NextPage = () => {
         <p>Feel free to reach out through any platforms bellow:</p>
 
         <div className="blue-title">
-          <span onClick={copyEmailToClipboard} />
+          <span role="none" onClick={copyEmailToClipboard} />
           <a
             href="https://instagram.com/gugabispo99"
             target="_blank"
