@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import type { NextPage } from 'next';
 import Link from 'next/link';
-import { useMediaQuery } from 'react-responsive';
 import toast from 'react-hot-toast';
 
 import styles from '../styles/Contact.module.scss';
@@ -14,22 +13,14 @@ const initialState = {
   message: '',
 };
 
-const Home: NextPage = () => {
-  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 767px)' });
-  const [triggered, setIsTriggered] = useState(false);
+const Contact: NextPage = () => {
   const [formData, setFormData] = useState(initialState);
 
-  useEffect(() => {
-    document?.addEventListener('click', () => {
-      return isTabletOrMobile && setIsTriggered(!triggered);
-    });
-  });
-
   const checkDataFormIsValid = () => {
-    if (formData && !formData.email)
-      throw new Error('Please enter a valid email!');
     if (formData && !formData.name)
       throw new Error('Please enter a valid name!');
+    if (formData && !formData.email)
+      throw new Error('Please enter a valid email!');
     if (formData && !formData.subject)
       throw new Error('Please enter a valid subject!');
     if (formData && !formData.message)
@@ -73,11 +64,11 @@ const Home: NextPage = () => {
     <div className={styles.container}>
       <div className="goBack">
         <Link href="/">
-          <a>Home</a>
+          <a>home</a>
         </Link>
       </div>
 
-      <div className={styles.center}>
+      <div>
         <h1 className={styles.title}>
           Let&apos;s make the
           <br />
@@ -159,4 +150,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default Contact;

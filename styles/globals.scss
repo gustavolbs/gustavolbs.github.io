@@ -57,12 +57,12 @@ a {
   animation-delay: 0.4s !important;
 
   &:after {
-    content: 'Work';
+    content: 'I am';
   }
 
   &:hover:after,
   &.triggeredHover:after {
-    content: 'I am';
+    content: 'Work';
   }
 }
 
@@ -70,12 +70,12 @@ a {
   animation-delay: 0.8s !important;
 
   &:after {
-    content: 'Contact';
+    content: 'Gustavo';
   }
 
   &:hover:after,
   &.triggeredHover:after {
-    content: 'Gustavo';
+    content: 'Contact';
   }
 }
 
@@ -94,6 +94,12 @@ a {
     position: fixed;
     top: 10%;
   }
+}
+
+.size-large {
+  line-height: 160% !important;
+  font-size: 24px !important;
+  margin-bottom: 4vh !important;
 }
 
 @media screen and (max-width: 767px) {
